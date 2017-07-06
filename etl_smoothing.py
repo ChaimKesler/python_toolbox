@@ -1,6 +1,6 @@
 # Anthony Kesler
 # 2017-06-29
-# Data ETL: Get, Normalize, Post
+# Data ETL: Get, Standardize, Post
 
 # This is an untested template script
 # THIS WILL DROP TABLES
@@ -47,7 +47,7 @@ def etl_data(db_data, pull_table, target_table, chunk_size):
             data.loc[:, data.dtypes != object] = standardize.fit_transform(data.loc[:, data.dtypes != object])
             try:
                 engine = create_engine(engine_string, echo=False)
-                # Warning: 'replace' will drop and recreate the table - read to_sql documentation to change
+                # Warning: 'replace' will drop and recreate the table - read to_sql documentation
                 data.to_sql(name = target_table, con = engine, if_exists = 'replace', index = False)
             except Exception as ex:
                 print(ex)
