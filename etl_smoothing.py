@@ -77,7 +77,7 @@ def main():
 
     try:
         print("Loading database preferences...")
-        sys.path.append(preference_path)  # Filepath to database settings
+        sys.path.append(preferences)  # Filepath to database settings
         from db_conn import db_data  # Connect to database
             try:
                 print('Starting pull of raw data...')
